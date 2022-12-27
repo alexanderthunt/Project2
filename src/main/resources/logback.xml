@@ -1,0 +1,32 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdcKeyName>METHOD</includeMdcKeyName>
+            <includeMdcKeyName>URI</includeMdcKeyName>
+        </encoder>
+    </appender>
+
+    <!-- configure a rolling class -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+
+        <!-- creates a log file called activityLogs-->
+        <file>logs/activityLogs.log</file>
+        <!-- write to file instead of overwriting-->
+        <append>true</append>
+
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdcKeyName>METHOD</includeMdcKeyName>
+            <includeMdcKeyName>URI</includeMdcKeyName>
+        </encoder>
+
+    </appender>
+
+    <!-- logs level -->
+    <root level="INFO">
+        <!-- reference for the type of logging -->
+        <appender-ref ref="FILE" />
+        <!-- <appender-ref ref="STDOUT"/> -->
+    </root>
+
+</configuration>
