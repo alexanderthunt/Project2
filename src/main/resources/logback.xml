@@ -1,32 +1,39 @@
+<!-- Basic config for logger -->
 <configuration>
-
+    <!-- appender tag tells how and where -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <includeMdcKeyName>METHOD</includeMdcKeyName>
-            <includeMdcKeyName>URI</includeMdcKeyName>
+        <!-- enconder tag is for formatting --> 
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
         </encoder>
     </appender>
 
-    <!-- configure a rolling class -->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-
-        <!-- creates a log file called activityLogs-->
-        <file>logs/activityLogs.log</file>
-        <!-- write to file instead of overwriting-->
+        <!-- file tag tells logback where to save the log file -->
+        <file>logs/staticLogs.log</file>
+        <!-- append tag tells logback to add to current file or create a new file -->
         <append>true</append>
-
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- Include MDC keys in the log messages -->
             <includeMdcKeyName>METHOD</includeMdcKeyName>
             <includeMdcKeyName>URI</includeMdcKeyName>
         </encoder>
-
     </appender>
 
-    <!-- logs level -->
+    <!-- root tag tells logback the default setting when not specified -->
     <root level="INFO">
-        <!-- reference for the type of logging -->
-        <appender-ref ref="FILE" />
-        <!-- <appender-ref ref="STDOUT"/> -->
+        <!-- Single Tags: ends with a forward slash /-->
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
-
 </configuration>
+
+<!--
+    Logging levels:
+        TRACE - Provides all information
+        DEBUG - Provides relevant information for debugging
+        INFO - Provides general information
+        WARN - Provides developer of issues
+        ERROR - Provides information of failures
+        NONE (disable)
+-->
