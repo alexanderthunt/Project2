@@ -10,7 +10,7 @@
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <!-- file tag tells logback where to save the log file -->
-        <file>logs/staticLogs.log</file>
+        <file>logs/activityLogs.log</file>
         <!-- append tag tells logback to add to current file or create a new file -->
         <append>true</append>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
