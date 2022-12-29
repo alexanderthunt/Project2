@@ -17,26 +17,27 @@ import com.revature.project1.services.UserService;
 public class AuthenticateController {
 
     @Autowired
-    private UserService uService;
+    private UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<User> authenticate(@RequestBody UsernamePasswordAuthentication user, HttpSession session) {
 
-        User userAuthenticated = this.uService.getUserByUsername(user.getUsername(), user.getPassword());
+        User userAuthenticated = this.userService.getUserByUsername(user);
         session.setAttribute("user", userAuthenticated.getUsername());
         return new ResponseEntity<>(userAuthenticated, HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody UsernamePasswordAuthentication user) {
+    public ResponseEntity<String> register(@RequestBody UsernamePasswordAuthentication user) {
 
-        return new ResponseEntity<>(this.uService.registerUser(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.userService.registerUser(user), HttpStatus.CREATED);
     }
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpSession session) {
 
-        return new ResponseEntity<>("logout", HttpStatus.OK);
+        session.invalidate();
+        return new ResponseEntity<>("Successfully logged out", HttpStatus.OK);
     }
 
 }

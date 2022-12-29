@@ -5,8 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.project1.exceptions.IncorrectPasswordException;
-import com.revature.project1.exceptions.NotFoundException;
+import com.revature.project1.exceptions.NotMatchingException;
 import com.revature.project1.models.User;
 import com.revature.project1.models.UsernamePasswordAuthentication;
 import com.revature.project1.repository.UserDao;
@@ -17,23 +16,23 @@ public class UserService {
     @Autowired
     private UserDao dao;
 
-    public User getUserByUsername(String username, String password) {
+    public User getUserByUsername(UsernamePasswordAuthentication user) {
 
-        Optional<User> user = this.dao.findByUsername(username);
+        Optional<User> optionalUser = this.dao.findUserByUsername(user.getUsername());
 
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
-            return user.get();
-        } else if (user.isEmpty()) {
-            throw new NotFoundException("User not found");
+        if (optionalUser.isPresent() && optionalUser.get().getPassword().equals(user.getPassword())) {
+            return optionalUser.get();
+        } else if (optionalUser.isEmpty()) {
+            throw new NotMatchingException("User not found");
         } else {
-            throw new IncorrectPasswordException();
+            throw new NotMatchingException("Incorrect password");
         }
     }
 
-    public User registerUser(UsernamePasswordAuthentication registerAccount) {
+    public String registerUser(UsernamePasswordAuthentication registerAccount) {
 
         this.dao.createUser(registerAccount.getUsername(), registerAccount.getPassword());
-        return this.dao.findByUsername(registerAccount.getUsername()).get();
+        return "Registration successful";
     }
 
 }

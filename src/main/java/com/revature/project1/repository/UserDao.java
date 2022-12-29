@@ -14,12 +14,12 @@ public interface UserDao extends JpaRepository<User, Integer> {
 
     // Returns the User with the given username wrapped in an Optional, or an empty
     // Optional if no such User exists
-    Optional<User> findByUsername(String username);
+    Optional<User> findUserByUsername(String username);
 
     // Creates a new User with the given username and password
     @Modifying
     @Transactional
-    @Query(value = "insert into users value values(:username, :password)", nativeQuery = true)
+    @Query(value = "insert into users values(default, :username, :password)", nativeQuery = true)
     void createUser(@Param("username") String username, @Param("password") String password);
 
 }

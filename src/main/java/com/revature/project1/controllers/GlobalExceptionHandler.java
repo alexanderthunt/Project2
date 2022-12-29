@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.revature.project1.exceptions.IncorrectPasswordException;
+import com.revature.project1.exceptions.NotMatchingException;
 import com.revature.project1.exceptions.NotLoggedInException;
 import com.revature.project1.exceptions.NotFoundException;
 
@@ -27,21 +27,21 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> userNotFound(NotFoundException e) {
 
         log.error(e.getLocalizedMessage());
-        return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(IncorrectPasswordException.class)
-    public ResponseEntity<String> incorrectPassword(IncorrectPasswordException e) {
+    @ExceptionHandler(NotMatchingException.class)
+    public ResponseEntity<String> incorrectPassword(NotMatchingException e) {
 
-        log.error(e.getMessage());
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        log.error(e.getLocalizedMessage());
+        return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(NotLoggedInException.class)
     public ResponseEntity<String> notLoggedIn(NotLoggedInException e) {
 
-        log.error(e.getMessage());
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        log.error(e.getLocalizedMessage());
+        return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED);
     }
 
 }
