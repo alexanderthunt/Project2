@@ -33,12 +33,7 @@ public class UserService {
     }
 
     public User registerUser(UsernamePasswordAuthentication registerAccount) {
-        // try {
         this.dao.createUser(registerAccount.getUsername(), registerAccount.getPassword());
-        // } catch (SQLException e) {
-        // throw new RuntimeException(e);
-        // }
-
         return this.dao.findByUsername(registerAccount.getUsername()).get();
     }
 
