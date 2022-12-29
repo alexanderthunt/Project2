@@ -1,9 +1,6 @@
 package com.revature.project1.services;
 
-import java.sql.SQLException;
 import java.util.Optional;
-
-import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

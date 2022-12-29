@@ -15,21 +15,22 @@ import com.revature.project1.exceptions.UserNotFoundException;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private Logger exceptionLogger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     @ExceptionHandler(SQLException.class)
-    public ResponseEntity<String> SQLExceptionFound(SQLException e) {
+    public ResponseEntity<String> sqlExceptionFound(SQLException e) {
         return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<String> userNotFound(UserNotFoundException e) {
-        exceptionLogger.error(e.getMessage());
+        log.error(e.getMessage());
         return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(IncorrectPasswordException.class)
     public ResponseEntity<String> incorrectPassword(IncorrectPasswordException e) {
+        log.error(e.getMessage());
         return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED);
     }
 
