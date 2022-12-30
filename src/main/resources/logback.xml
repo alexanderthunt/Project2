@@ -24,7 +24,7 @@
     <root level="INFO">
         <!-- Single Tags: ends with a forward slash /-->
         <appender-ref ref="FILE"/>
-        <appender-ref ref="STDOUT"/>
+        <!-- <appender-ref ref="STDOUT"/> -->
     </root>
 </configuration>
 
