@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.project1.models.User;
 import com.revature.project1.models.UsernamePasswordAuthentication;
 import com.revature.project1.services.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class AuthenticateController {
