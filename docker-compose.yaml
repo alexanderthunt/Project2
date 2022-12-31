@@ -1,0 +1,67 @@
+version: "3"
+services:
+  planetarium:
+    image: twcl774/planetarium:latest
+    container_name: planetarium
+    networks:
+      - Planetarium
+    ports:
+      - 8080:8080
+    volumes:
+      - ./logs:/logs
+    environment:
+      - TZ=America/New_York
+
+  loki:
+    image: grafana/loki:latest
+    container_name: logs-loki
+    networks:
+      - Planetarium
+    ports:
+      - 3100:3100
+    environment:
+      - TZ=America/New_York
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: logs-promtail
+    command: "--config.file=/etc/promtail/promtail-config.yaml"
+    networks:
+      - Planetarium
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - ./configs/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+      - ./logs/activityLogs.log:/var/log/activityLogs.log
+    depends_on:
+      - loki
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: logs-prometheus
+    command: "--config.file=/etc/prometheus/prometheus-config.yaml"
+    networks:
+      - Planetarium
+    ports:
+      - 9090:9090
+    volumes:
+      - ./configs/prometheus-config.yaml:/etc/prometheus/prometheus-config.yaml
+    environment:
+      - TZ=America/New_York
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: logs-grafana
+    networks:
+      - Planetarium
+    ports:
+      - 3000:3000
+    environment:
+      - TZ=America/New_York
+    depends_on:
+      - loki
+      - prometheus
+
+networks:
+  Planetarium:
+    external: true
