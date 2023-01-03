@@ -1,0 +1,27 @@
+groups:
+  - name: planetarium
+    rules:
+      - alert: PlanetariumHighLatency:1min
+        expr: sum(rate(http_server_requests_seconds_sum{job="planetarium"}[1m])) / sum(rate(http_server_requests_seconds_count{job="planetarium"}[1m])) > 0.2
+        labels:
+          severity: warn
+        annotations:
+          summary: "Latency is too high within 1min interval"
+          description: "Planetarium web app is slow in handling the request within 1min interval"
+
+      - alert: PlanetariumLowSuccessRate:1min
+        expr: sum(rate(http_server_requests_seconds_count{job="planetarium", outcome!="SERVER_ERROR"}[1m])) / sum(rate(http_server_requests_seconds_count{job="planetarium"}[1m])) < 0.998
+        labels:
+          severity: warn
+        annotations:
+          summary: "Success Rate is too low within 1min interval"
+          description: "Planetarium web app success rate went below 99.8% within the 1min interval"
+
+      - alert: WebAppDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Web App not responding"
+          description: "Planetarium Web App has been irresponsive for 1min"
