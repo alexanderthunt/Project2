@@ -34,7 +34,6 @@ The application currently utilizes Javalin and JDBC: you will be converting the 
   - Loki
   - Prometheus
   - Grafana
--
 
 ## SRE Requirements
 
