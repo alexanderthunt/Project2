@@ -79,5 +79,4 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 locustfile.py
-.gitignore
 grafana.json
