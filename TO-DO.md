@@ -9,12 +9,12 @@
 
 - Manifests
 
-  - [ ] deployment.yml - Alexander
-  - [ ] clusterip.yml - Tristan
-  - [ ] ingress.yml - Tristan
-  - [ ] Service Monitor - Sabrina
-  - [ ] configmap
-    - [ ] promtail-config.yml - Alexander
+  - [x] deployment.yml - Alexander
+  - [x] clusterip.yml - Tristan
+  - [x] ingress.yml - Tristan
+  - [x] Service Monitor - Sabrina
+  - [x] configmap
+    - [x] promtail-config.yml - Alexander
 
 - Values
 
