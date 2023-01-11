@@ -13,12 +13,15 @@
   - [ ] clusterip.yml - Tristan
   - [ ] ingress.yml - Tristan
   - [ ] Service Monitor - Sabrina
-  - [ ] configmap - Alexander
-    - [ ] promtail-config.yml
+  - [ ] configmap
+    - [ ] promtail-config.yml - Alexander
 
 - Values
+
   - [ ] grafana-prometheus.yml - Sabrina
   - [ ] jenkins.yml - Tristan
+
+- [ ] Jenkinsfile - Alexander
 
 # Installation
 
@@ -55,6 +58,12 @@ helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -f 
 helm repo add jenkins https://charts.jenkins.io
 helm upgrade --install jenkins jenkins/jenkins -f k8s/values/jenkins-values.yml
 ```
+
+- jenkins password
+
+  ```bash
+  kubectl get secret [--namespace [namespace]] [release] -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode ; echo
+  ```
 
 # Data Source url
 
