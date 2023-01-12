@@ -8,6 +8,7 @@
 # Files Needed
 
 - Manifests
+  https://kubernetes.github.io/ingress-nginx
 
   - [x] deployment.yml - Alexander
   - [x] clusterip.yml - Tristan
@@ -31,28 +32,28 @@
 kubectl apply -f k8s/manifest
 ```
 
-- ingress-nginx
+- [ingress-nginx](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx)
 
 ```bash
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo add ingress-nginx
 helm upgrade --install nginx ingress-nginx/ingress-nginx
 ```
 
-- loki-stack
+- [loki-stack](https://github.com/grafana/helm-charts/tree/main/charts/loki-stack)
 
 ```bash
 helm repo add grafana https://grafana.github.io/helm-charts
 helm upgrade --install loki grafana/loki-stack
 ```
 
-- prometheus-stack
+- [prometheus-stack](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml)
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -f k8s/values/prometheus-grafana-values.yml
 ```
 
-- jenkins
+- [jenkins](https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins)
 
 ```bash
 helm repo add jenkins https://charts.jenkins.io
