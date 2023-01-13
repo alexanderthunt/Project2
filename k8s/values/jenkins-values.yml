@@ -22,9 +22,9 @@ controller:
 
 agent:
   podTemplate:
-    greeting: |
-      - name: greeting
-        label: jenkins-greeting
+    planetarium: |
+      - name: planetarium
+        label: jenkins-planetarium
         serviceAccount: jenkins
         containers:
         - name: docker
