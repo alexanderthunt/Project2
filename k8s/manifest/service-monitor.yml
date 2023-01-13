@@ -5,7 +5,7 @@ metadata:
   # namespace: default
   labels:
     app: "planetarium"
-    prometheus: planetarium
+    release: prometheus ## Default ServiceMonitorSelector label created by prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues: true
 spec:
   jobLabel: planetarium
   selector:
