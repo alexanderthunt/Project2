@@ -46,7 +46,7 @@ helm repo add grafana https://grafana.github.io/helm-charts
 helm upgrade --install loki grafana/loki-stack
 ```
 
-- [prometheus-stack](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml)
+- [prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
