@@ -1,9 +1,28 @@
+## Labels to apply to all resources
+commonLabels:
+  prometheus: planetarium
+
 defaultRules:
   labels:
-    prometheus: planetarium
+    release: prometheus
+
+## Labels to match when selecting ServiceMonitors
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        prometheus: planetarium
+
+## Adds label because commonLabels doesn't get applied
+kube-state-metrics:
+  prometheus:
+    monitor:
+      enabled: true
+      additionalLabels:
+        prometheus: planetarium
 
 grafana:
-  namespaceOverride: "default"
+  namespaceOverride: default
   adminPassword: teamsol
   grafana.ini:
     server:
