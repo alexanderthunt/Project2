@@ -2,10 +2,6 @@
 commonLabels:
   prometheus: planetarium
 
-defaultRules:
-  labels:
-    release: prometheus
-
 ## Labels to match when selecting ServiceMonitors
 prometheus:
   prometheusSpec:
