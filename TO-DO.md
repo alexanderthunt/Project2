@@ -8,7 +8,6 @@
 # Files Needed
 
 - Manifests
-  https://kubernetes.github.io/ingress-nginx
 
   - [x] deployment.yml - Alexander
   - [x] clusterip.yml - Tristan
@@ -19,8 +18,8 @@
 
 - Values
 
-  - [ ] grafana-prometheus.yml - Sabrina
-  - [ ] jenkins.yml - Tristan
+  - [x] grafana-prometheus.yml - Sabrina
+  - [x] jenkins.yml - Tristan
 
 - [ ] Jenkinsfile - Alexander
 
@@ -63,10 +62,12 @@ helm upgrade --install jenkins jenkins/jenkins -f k8s/values/jenkins-values.yml
 - jenkins password
 
   ```bash
-  kubectl get secret [--namespace [namespace]] [release] -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode ; echo
+  kubectl get secret jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode ; echo
   ```
 
 # Data Source url
 
-- `http://prometheus-kube-prometheus-prometheus.default:9090`
-- `http://loki:3100`
+```bash
+http://prometheus-kube-prometheus-prometheus.default:9090
+http://loki:3100
+```
