@@ -20,10 +20,6 @@ public class WebMVCConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(authInterceptor).addPathPatterns("/api/**");
         registry.addInterceptor(logInterceptor).addPathPatterns("/**").order(Ordered.HIGHEST_PRECEDENCE);
-        // registry.addInterceptor(logInterceptor).addPathPatterns("/register");
-        // registry.addInterceptor(authInterceptor).addPathPatterns("/login").order(Ordered.HIGHEST_PRECEDENCE);
-        // registry.addInterceptor(logInterceptor).addPathPatterns("/login");
-        // registry.addInterceptor(authInterceptor).addPathPatterns("/logout");
     }
 
 }

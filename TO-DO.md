@@ -8,7 +8,6 @@
 # Files Needed
 
 - Manifests
-  https://kubernetes.github.io/ingress-nginx
 
   - [x] deployment.yml - Alexander
   - [x] clusterip.yml - Tristan
@@ -19,8 +18,8 @@
 
 - Values
 
-  - [ ] grafana-prometheus.yml - Sabrina
-  - [ ] jenkins.yml - Tristan
+  - [x] grafana-prometheus.yml - Sabrina
+  - [x] jenkins.yml - Tristan
 
 - [ ] Jenkinsfile - Alexander
 
@@ -46,7 +45,7 @@ helm repo add grafana https://grafana.github.io/helm-charts
 helm upgrade --install loki grafana/loki-stack
 ```
 
-- [prometheus-stack](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml)
+- [prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -63,10 +62,12 @@ helm upgrade --install jenkins jenkins/jenkins -f k8s/values/jenkins-values.yml
 - jenkins password
 
   ```bash
-  kubectl get secret [--namespace [namespace]] [release] -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode ; echo
+  kubectl get secret jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode ; echo
   ```
 
 # Data Source url
 
-- `http://prometheus-kube-prometheus-prometheus.default:9090`
-- `http://loki:3100`
+```bash
+http://prometheus-kube-prometheus-prometheus.default:9090
+http://loki:3100
+```

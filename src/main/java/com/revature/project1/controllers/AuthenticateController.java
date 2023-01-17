@@ -2,7 +2,6 @@ package com.revature.project1.controllers;
 
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +23,9 @@ public class AuthenticateController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<User> authenticate(@RequestBody UsernamePasswordAuthentication user, HttpServletRequest request) {
+    public ResponseEntity<User> authenticate(@RequestBody UsernamePasswordAuthentication user, HttpSession session) {
 
         User userAuthenticated = this.userService.getUserByUsername(user);
-        HttpSession session = request.getSession();
         session.setAttribute("user", userAuthenticated.getUsername());
         return new ResponseEntity<>(userAuthenticated, HttpStatus.OK);
     }
@@ -39,8 +37,8 @@ public class AuthenticateController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<String> logout(HttpServletRequest request) {
-        HttpSession session = request.getSession(); 
+    public ResponseEntity<String> logout(HttpSession session) {
+
         session.invalidate();
         return new ResponseEntity<>("Successfully logged out", HttpStatus.OK);
     }
@@ -61,7 +59,7 @@ public class AuthenticateController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/error")
+    @GetMapping("/error500")
     public ResponseEntity<String> getError() {
 
         return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
