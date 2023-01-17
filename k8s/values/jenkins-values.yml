@@ -1,27 +1,30 @@
 controller:
-  installPlugins: # in an ideal situation you would specify the version of the plugin you use
+  installPlugins:
     - kubernetes
     - workflow-aggregator
     - git
     - configuration-as-code
     - docker-workflow
+    - workflow-aggregator
     - github-branch-source
     - docker-plugin
     - pipeline-stage-view
     - timestamper
     - github
 
+  JCasC:
+    defaultConfig: true
+  # to get generated password: kubectl get secret [--namespace [namespace]] [release] -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode ; echo
   jenkinsUriPrefix: "/jenkins"
-  ingress: # this tells Kubernetes to create an ingress object that gives us access to jenkins
+  ingress:
     enabled: true
-    # Override for the default paths that map requests to the backend
     paths: []
     apiVersion: networking.k8s.io/v1
     ingressClassName: nginx
     path: "/jenkins"
 
 agent:
-  podTemplate:
+  podTemplates:
     planetarium: |
       - name: planetarium
         label: jenkins-planetarium
