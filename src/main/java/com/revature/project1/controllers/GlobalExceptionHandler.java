@@ -25,12 +25,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<String> nullPointer(NullPointerException e) {
-
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
-    }
-
     @ExceptionHandler(SQLException.class)
     public ResponseEntity<String> sqlExceptionFound(SQLException e) {
 

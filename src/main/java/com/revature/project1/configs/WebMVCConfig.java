@@ -18,7 +18,7 @@ public class WebMVCConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(authInterceptor).addPathPatterns("/api/**");
+        registry.addInterceptor(authInterceptor).addPathPatterns("/planetarium/api/**");
         registry.addInterceptor(logInterceptor).addPathPatterns("/**").order(Ordered.HIGHEST_PRECEDENCE);
     }
 
