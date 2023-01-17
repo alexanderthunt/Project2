@@ -3,8 +3,6 @@ package com.revature.project1.configs;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -19,10 +17,6 @@ public class LoggingInterceptor implements HandlerInterceptor {
             Object handler,
             @Nullable Exception ex)
             throws Exception {
-
-        // Logger log = LoggerFactory.getLogger(getClass());
-        // log.info(System.getenv("HOSTNAME"));
-        // log.info(request.getSession(false).getId().toString());
 
         MDC.clear();
     }

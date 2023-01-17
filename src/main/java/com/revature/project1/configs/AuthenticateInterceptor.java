@@ -17,7 +17,7 @@ public class AuthenticateInterceptor implements HandlerInterceptor {
             Object handler)
             throws Exception {
 
-        if (request.getSession(false).getAttribute("user") == null) {
+        if (request.getSession().getAttribute("user") == null) {
             throw new NotLoggedInException();
         }
 
