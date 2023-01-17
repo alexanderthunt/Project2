@@ -1,7 +1,7 @@
 pipeline{
     agent{
         kubernetes{
-            // this tells Jenkins to use the pod called "devops" we defined in the jenkins-values.yaml file
+            // this tells Jenkins to use the pod called "planetarium" we defined in the jenkins-values.yaml file
             // which will give us access to the docker commands we need to build/push our docker image
             inheritFrom "planetarium"
         }
@@ -31,5 +31,4 @@ pipeline{
             }
         }
     }
-
 }
