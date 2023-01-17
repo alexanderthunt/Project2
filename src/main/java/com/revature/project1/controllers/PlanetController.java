@@ -21,31 +21,31 @@ public class PlanetController {
     @Autowired
     private PlanetService planetService;
 
-    @GetMapping("/planetarium/api/planets")
+    @GetMapping("/api/planets")
     public ResponseEntity<List<Planet>> getAllPlanets() {
 
         return new ResponseEntity<>(this.planetService.getAllPlanets(), HttpStatus.OK);
     }
 
-    @GetMapping("/planetarium/api/planet/{name}")
+    @GetMapping("/api/planet/{name}")
     public ResponseEntity<Planet> getPlanetByName(@PathVariable String name) {
 
         return new ResponseEntity<>(this.planetService.getPlanetByName(name), HttpStatus.OK);
     }
 
-    @GetMapping("/planetarium/api/planet/id/{id}")
+    @GetMapping("/api/planet/id/{id}")
     public ResponseEntity<Planet> getPlanetByName(@PathVariable int id) {
 
         return new ResponseEntity<>(this.planetService.getPlanetById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/planetarium/api/planet")
+    @PostMapping("/api/planet")
     public ResponseEntity<String> createPlanet(@RequestBody Planet planet) {
 
         return new ResponseEntity<>(this.planetService.createPlanet(planet), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/planetarium/api/planet/{id}")
+    @DeleteMapping("/api/planet/{id}")
     public ResponseEntity<String> deletePlanet(@PathVariable int id) {
 
         return new ResponseEntity<>(this.planetService.deletePlanetById(id), HttpStatus.OK);

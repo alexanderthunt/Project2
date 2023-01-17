@@ -22,7 +22,7 @@ public class AuthenticateController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/planetarium/login")
+    @PostMapping("/login")
     public ResponseEntity<User> authenticate(@RequestBody UsernamePasswordAuthentication user, HttpSession session) {
 
         User userAuthenticated = this.userService.getUserByUsername(user);
@@ -30,20 +30,20 @@ public class AuthenticateController {
         return new ResponseEntity<>(userAuthenticated, HttpStatus.OK);
     }
 
-    @PostMapping("/planetarium/register")
+    @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UsernamePasswordAuthentication user) {
 
         return new ResponseEntity<>(this.userService.registerUser(user), HttpStatus.CREATED);
     }
 
-    @PostMapping("/planetarium/logout")
+    @PostMapping("/logout")
     public ResponseEntity<String> logout(HttpSession session) {
 
         session.invalidate();
         return new ResponseEntity<>("Successfully logged out", HttpStatus.OK);
     }
 
-    @GetMapping("/planetarium/delay")
+    @GetMapping("/delay")
     public ResponseEntity<String> getDelay() {
 
         Random random = new Random();
@@ -59,7 +59,7 @@ public class AuthenticateController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/planetarium/error500")
+    @GetMapping("/error500")
     public ResponseEntity<String> getError() {
 
         return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
