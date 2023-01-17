@@ -21,37 +21,37 @@ public class MoonController {
     @Autowired
     private MoonService moonService;
 
-    @GetMapping("/planetarium/api/moons")
+    @GetMapping("/api/moons")
     public ResponseEntity<List<Moon>> getAllMoons() {
 
         return new ResponseEntity<>(this.moonService.getAllMoons(), HttpStatus.OK);
     }
 
-    @GetMapping("/planetarium/api/moon/planet/{id}")
+    @GetMapping("/api/moon/planet/{id}")
     public ResponseEntity<List<Moon>> getMoonByPlanetId(@PathVariable int id) {
 
         return new ResponseEntity<>(this.moonService.getMoonByPlanetId(id), HttpStatus.OK);
     }
 
-    @GetMapping("/planetarium/api/moon/{name}")
+    @GetMapping("/api/moon/{name}")
     public ResponseEntity<Moon> getMoonByName(@PathVariable String name) {
 
         return new ResponseEntity<>(this.moonService.getMoonByName(name), HttpStatus.OK);
     }
 
-    @GetMapping("/planetarium/api/moon/id/{id}")
+    @GetMapping("/api/moon/id/{id}")
     public ResponseEntity<Moon> getMoonByName(@PathVariable int id) {
 
         return new ResponseEntity<>(this.moonService.getMoonById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/planetarium/api/moon")
+    @PostMapping("/api/moon")
     public ResponseEntity<String> createMoon(@RequestBody Moon moon) {
 
         return new ResponseEntity<>(this.moonService.createMoon(moon), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/planetarium/api/moon/{id}")
+    @DeleteMapping("/api/moon/{id}")
     public ResponseEntity<String> deleteMoon(@PathVariable int id) {
 
         return new ResponseEntity<>(this.moonService.deleteMoonById(id), HttpStatus.OK);
