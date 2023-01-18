@@ -24,3 +24,16 @@ resource "aws_s3_bucket" "terraform_state" {
     }
   }
 }
+
+resource "aws_db_instance" "default" {
+  allocated_storage    = 10
+  max_allocated_storage = 20
+  db_name              = "panetarium"
+  engine               = "postgresql"
+  engine_version       = "13.7-R1"
+  instance_class       = "db.t3.micro"
+  vpc_security_group_ids = "rds-access"
+  username             = access_key
+  password             = secret_key
+  skip_final_snapshot  = true
+}
