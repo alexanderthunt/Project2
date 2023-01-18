@@ -1,5 +1,4 @@
 variable "access_key" {}
-
 variable "secret_key" {}
 
 # this tells terraform that the script will use two variables, one called acces_key, the other secret_key
