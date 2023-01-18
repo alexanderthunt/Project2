@@ -80,3 +80,4 @@ buildNumber.properties
 .classpath
 locustfile.py
 grafana.json
+Terraform/terraform.tfvars

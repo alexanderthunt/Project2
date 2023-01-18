@@ -21,7 +21,11 @@
   - [x] grafana-prometheus.yml - Sabrina
   - [x] jenkins.yml - Tristan
 
-- [ ] Jenkinsfile - Alexander
+- [x] Jenkinsfile - Alexander
+- [x] Terraform
+  - [x] main.tf - Sabrina
+  - [x] terraform.tf - Alexander
+  - [x] variables.tf - Tristan
 
 # Installation
 
@@ -50,6 +54,12 @@ helm upgrade --install loki grafana/loki-stack
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -f k8s/values/prometheus-grafana-values.yml
+```
+
+- Alerts and Rules
+
+```bash
+https://promtools.dev/alerts/errors
 ```
 
 - [jenkins](https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins)
