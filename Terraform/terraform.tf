@@ -9,8 +9,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "revature-demo-state-bucket"
-    profile = "demo-user"
+    bucket = "revature-team-sol-terraform-state-bucket"
+    profile = "terraform"
     region = "us-east-1"
     key = "state/terraform.tfstate"
     encrypt = true
