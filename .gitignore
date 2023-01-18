@@ -81,3 +81,5 @@ buildNumber.properties
 locustfile.py
 grafana.json
 Terraform/terraform.tfvars
+Terraform/.terraform.lock.hcl
+Terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/4.50.0/linux_amd64/terraform-provider-aws_v4.50.0_x5
