@@ -78,8 +78,7 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
-locustfile.py
-grafana.json
-Terraform/terraform.tfvars
-Terraform/.terraform.lock.hcl
-Terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/4.50.0/linux_amd64/terraform-provider-aws_v4.50.0_x5
+Terraform/*.tfvars
+Terraform/.terraform/*
+Terraform/terraform.tfstate*
+.gitignore
