@@ -5,12 +5,12 @@ metadata:
   annotations: # Any object can use annotations. These will affect the resource/object in certain ways
     kubernetes.io/ingress.class: nginx # this is provided by helm see https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
     nginx.ingress.kubernetes.io/use-regex: "true" # this lets us provide a pattern as a rule for where to send a request
-    nginx.ingress.kubernetes.io/rewrite-target: $1 # this tells the controller to remove the prefix added to the route
+    nginx.ingress.kubernetes.io/rewrite-target: $1
     nginx.ingress.kubernetes.io/affinity: "cookie"
     nginx.ingress.kubernetes.io/affinity-mode: balanced
-    nginx.ingress.kubernetes.io/session-cookie-expires: "60"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "60"
-    # nginx.ingress.kubernetes.io/session-cookie-path: /planetarium
+    nginx.ingress.kubernetes.io/session-cookie-path: /planetarium
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
 spec:
   ingressClassName: nginx
   rules:
