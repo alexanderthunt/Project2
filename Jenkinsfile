@@ -20,12 +20,15 @@ pipeline{
         stage("build and push docker image"){
             // steps is where the actual commands go
             steps{
-                echo "print something to the console"
+                echo "Docker Build and Push"
                 container("docker"){
                     // the script section is sometimes needed when using functions provided by Jenkins plugins    
                     script{
                         // build(image name and tag, location of dockerfile)
                         PLANETARIUM_IMAGE= docker.build(PLANETARIUM_REGISTRY,".") 
+                        docker.withRegistry("", 'docker-creds'){
+                            DEVOPS_IMAGE.push("$currentBuild.number")
+                            DEVOPS_IMAGE.push("latest")
                     }                    
                 }
             }
