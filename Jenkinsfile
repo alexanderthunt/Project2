@@ -27,8 +27,8 @@ pipeline{
                         // build(image name and tag, location of dockerfile)
                         PLANETARIUM_IMAGE= docker.build(PLANETARIUM_REGISTRY,".") 
                         docker.withRegistry("", 'docker-creds'){
-                            DEVOPS_IMAGE.push("$currentBuild.number")
-                            DEVOPS_IMAGE.push("latest")
+                            PLANETARIUM_IMAGE.push("$currentBuild.number")
+                            PLANETARIUM_IMAGE.push("latest")
                     }                    
                 }
             }
