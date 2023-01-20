@@ -27,6 +27,8 @@
   - [x] terraform.tf - Alexander
   - [x] variables.tf - Tristan
 
+- Present [x]
+
 # Installation
 
 - Planetarium
